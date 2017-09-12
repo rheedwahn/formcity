@@ -15,5 +15,14 @@ class EventAttendee extends Model
 		 return $reference_code;
 	}
 
+	public function user()
+	{
+		return $this->BelongsTo('App\User');
+	}
+
+	public function event()
+	{
+		return $this->BelongsTo('App\Model\Event\Event');
+	}
 	
 }

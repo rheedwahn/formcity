@@ -19,8 +19,9 @@ class CreateEventAttendeesTable extends Migration
             $table->integer('event_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->boolean('sms')->nullable()->default(0);
-            $table->boolean('pay_status')->nullable()->default(0);
+            $table->string('pay_status')->nullable()->default(0);
             $table->string('reference_code')->nullable();
+            $table->string('pay_reference')->nullable();
             $table->double('amount')->nullable();
             $table->timestamps();
         });

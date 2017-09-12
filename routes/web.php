@@ -33,9 +33,21 @@ Route::get('/event_preview', function () {
     return view('event_preview');
 })->name('event_preview');
 
-Route::get('/event_confirm', function () {
-    return view('event_confirm');
-})->name('event_confirm')->middleware('auth');
+// Route::get('/event_confirm', function () {
+//     return view('event_confirm');
+// })->name('event_confirm')->middleware('auth');
+
+Route::get('/event_confirm', [
+    'uses' => 'Event\EventController@showEvent',
+    'as' => 'event_confirm',
+    'middleware' => 'auth',
+]);
+
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware('auth');
+
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback')->middleware('auth');
+
+Route::get('/payment/reciept/{id}', 'PaymentController@getReciept')->name('reciept')->middleware('auth');
 
 Route::get('/book_event', function () {
     return view('book_event');
@@ -44,7 +56,7 @@ Route::get('/book_event', function () {
 Route::post('/attend_event', 'Event\EventController@attendEvent')->name('attend_event');
 
 Route::get('/formcity_card', function () {
-    return view('formcity_card');
+    return view('formcity_card'); 
 })->name('formcity_card');
 
 

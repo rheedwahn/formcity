@@ -7,11 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Model\Event\Event;
 use App\Model\Event\EventAttendee;
 use App\Http\Controllers\User\UserController;
+use Paystack;
 
 
 class EventController extends Controller
 {
     //
+
+    public function showEvent()
+    {
+        return view('event_confirm');
+    }
 
     public function attendEvent(Request $request)
     {

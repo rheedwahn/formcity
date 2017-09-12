@@ -11,7 +11,7 @@ class BeautyPageant extends Model
 
 	public function user()
 	{
-		return $this->belongsTO('App\User');
+		return $this->belongsTo('App\User');
 	}
 
 	public function is_active()
@@ -25,11 +25,11 @@ class BeautyPageant extends Model
 
 	public function category()
 	{
-		return $this->belongsTO('App\Model\Category');
+		return $this->belongsTo('App\Model\Category');
 	}
 
 	public function pageantOwner()
 	{
-		return $this->belongsTO('App\User', 'owner_id');
+		return $this->belongsTo('App\User', 'owner_id');
 	}
 }
